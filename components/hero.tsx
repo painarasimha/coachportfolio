@@ -10,18 +10,19 @@ export default function Hero() {
         alt="Background"
         fill
         priority
-        className="z-0 object-center"
+        className="z-0 blur-[2px] md:object-center"
       />
       
       {/* Content */}
-      <div className="z-20 relative space-y-6 bg-white/80 shadow-lg px-3 py-3 border-[#8e8e8e] border-r-4 rounded-lg max-w-2xl text-center">
-        <h1 className="font-bold text-4xl sm:text-5xl leading-tight">
+      <div className="z-20 relative space-y-6 bg-white/75 shadow-lg px-3 py-3 rounded-3xl max-w-xl text-center">
+        <h1 className="font-bold text-black text-2xl md:text-4xl leading-tight">
           Transform Your Life with <span className="text-[#f78921]">Akshita</span>
         </h1>
-        <p className="text-lg sm:text-xl">
-          Unlock your full potential with powerful Law of Attraction strategies. Align your mindset, manifest your vision, and step into the life you desire.
+        <div className='bg-black/60 m-5 h-0.5'></div>
+        <p className="font-bold text-black text-lg md:text-xl">
+          Manifest Your Dream Life: Health, Love, Success & Abundance
         </p>
-        <button className="bg-[#F2A154] hover:bg-orange-400 mb-2 px-6 py-3 rounded-full text-white text-lg transition">
+        <button className="bg-[#F2A154] hover:bg-orange-400 mb-2 px-6 py-3 rounded-full font-bold text-white text-lg md:text-xl transition">
           Explore Courses
         </button>
       </div>
