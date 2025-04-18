@@ -1,7 +1,9 @@
-'use client'; // Add this if you're in Next.js App Router
+'use client';
+
+//TODO: fix the restart of the counter
 
 import { useState, useEffect, ReactElement } from 'react';
-import { useScrollAppear } from '@/hooks/useScrollAppear'; // Adjust if your path differs
+import { useScrollAppear } from '@/hooks/useScrollAppear';
 
 interface CountsState {
   countries: number;
@@ -33,9 +35,12 @@ export default function AchievementsCounter(): ReactElement {
   useEffect(() => {
     if (!isVisible) return;
 
-    const duration: number = 2000;
-    const frameRate: number = 20;
-    const steps: number = duration / frameRate;
+    // Reset to zero before starting count up
+    setCounts({ countries: 0, programs: 0, students: 0 });
+
+    const duration: number = 2000; // Total animation duration
+    const frameRate: number = 20; // Frame update rate
+    const steps: number = duration / frameRate; // Number of steps in the animation
 
     let step: number = 0;
     const interval = setInterval(() => {
@@ -52,7 +57,7 @@ export default function AchievementsCounter(): ReactElement {
       }
     }, frameRate);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(interval); // Cleanup interval on component unmount
   }, [isVisible]);
 
   const formatStudentCount = (count: number): string => {
@@ -63,25 +68,25 @@ export default function AchievementsCounter(): ReactElement {
   return (
     <div
       ref={ref}
-      className={`bg-gradient-to-r from-red-700 via-red-600 to-purple-900 py-16 w-full transition-opacity transform duration-700 ease-out ${
+      className={`bg-white py-16 w-full transition-opacity transform duration-700 ease-in-out ${
         isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
       <div className="mx-auto container">
         <div className="flex flex-row justify-around items-center text-center">
           <div className="px-4">
-            <h2 className="font-bold text-red-600 text-5xl">{counts.countries}+</h2>
-            <p className="mt-2 text-gray-700 text-lg uppercase">COUNTRIES</p>
+            <h2 className="font-bold text-[#f78921] text-5xl">{counts.countries}+</h2>
+            <p className="mt-2 font-semibold text-gray-700 text-lg uppercase">COUNTRIES</p>
           </div>
 
           <div className="px-4">
-            <h2 className="font-bold text-red-600 text-7xl">{counts.programs}+</h2>
-            <p className="mt-2 text-gray-700 text-lg uppercase">TRAINING PROGRAMS</p>
+            <h2 className="font-bold text-[#f78921] text-7xl">{counts.programs}+</h2>
+            <p className="mt-2 font-semibold text-gray-700 text-lg uppercase">TRAINING PROGRAMS</p>
           </div>
 
           <div className="px-4">
-            <h2 className="font-bold text-red-600 text-5xl">{formatStudentCount(counts.students)}</h2>
-            <p className="mt-2 text-gray-700 text-lg uppercase">HAPPY STUDENTS</p>
+            <h2 className="font-bold text-[#f78921] text-5xl">{formatStudentCount(counts.students)}</h2>
+            <p className="mt-2 font-semibold text-gray-700 text-lg uppercase">HAPPY STUDENTS</p>
           </div>
         </div>
       </div>
